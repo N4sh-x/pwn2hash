@@ -41,7 +41,21 @@ class MyParser(argparse.ArgumentParser):
         sys.stderr.write(f"Error: {message}\n\n")
         self.print_help()
         sys.exit(2)
+        
+# ASCII Banner
+def print_banner():
+    banner = """
+                     ________ .__                  .__     
+________  _  ______  \_____  \|  |__ _____    _____|  |__  
+\____ \ \/ \/ /    \  /  ____/|  |  \\__  \  /  ___/  |  \ 
+|  |_> >     /   |  \/       \|   Y  \/ __ \_\___ \|   Y  \
+|   __/ \/\_/|___|  /\_______ \___|  (____  /____  >___|  /
+|__|              \/         \/    \/     \/     \/     \/ 
 
+  Pwn2Hash - Handshake Extractor & Hashcat Cracker
+    """
+    print(banner)
+    
 def check_dependencies(verbose=False):
     """Checks if the required tools are installed."""
     required_tools = ["hcxpcapngtool", "hashcat"]
@@ -130,6 +144,8 @@ def main():
     parser.add_argument("-d", "--device", type=int, default=0, help="Hashcat device (default: 0)")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output")
     args = parser.parse_args()
+
+     print_banner()
 
     # Check dependencies before proceeding
     check_dependencies(args.verbose)
